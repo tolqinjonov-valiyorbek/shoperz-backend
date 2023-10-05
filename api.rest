@@ -1,0 +1,119 @@
+# registration admin  POST
+# req.body: username, password, 
+post http://localhost:5000/api/admin/register 
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin"
+}
+
+### 
+# Login admin / POST 
+# req.body: username, password 
+post http://localhost:5000/api/admin/login 
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin"
+}
+
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY1MWRlMTcwNjIwNGVjMjhjOTRiNjA2ZCIsInVzZXJuYW1lIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYiQwOCRXNC4vdE93R1VUakNpYWhNWDhJUXguSXE1cHY3S04vVm5Nbmhnd3NzbmRiTG5YbGpiMS5kbSIsImRhdGUiOiIyMDIzLTEwLTA0VDIyOjA0OjMyLjQyM1oiLCJfX3YiOjB9LCJpYXQiOjE2OTY1MDEzMzYsImV4cCI6MTY5NjU4NzczNn0.ONGARpuZRGpvn3fvs1OoJNyPx9fZzTa1RkJuFX9g__E",
+  "refreshToken": "$2b$10$SrK.4VdD51J2jGabnuTF.e"
+}
+
+###
+
+# refresh-token -admin / POST
+#req.body:  "refreshToken": "$2b$10$EDGqqPbxYmQbo5lxOzUsH."
+post http://localhost:5000/api/admin/refresh-token
+Content-Type: application/json
+
+{
+      "refreshToken": "$2b$10$SrK.4VdD51J2jGabnuTF.e"
+}
+
+###
+# registration user / POST
+# req.body: username, email, password
+# REQUIRED REQUEST BODIES ↓
+# username, email: john@gmail.com, password: john1234
+
+post http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username":"User",
+    "email":"user@gmail.com",
+    "password":"user1234"
+}
+
+###
+# login user / POST
+# req.body: email, password
+# REQUIRED REQUEST BODIES ↓
+#  email: john@gmail.com, password: john1234
+
+post http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    //"username":"User",
+    "email":"user@gmail.com",
+    "password":"user1234"
+}
+
+# res 
+{
+  "_id": "651e71da787708d7c03a5358",
+  "username": "User",
+  "email": "user@gmail.com",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWU3MWRhNzg3NzA4ZDdjMDNhNTM1OCIsImlhdCI6MTY5NjQ5NzgwOCwiZXhwIjoxNjk2NTg0MjA4fQ.ilI1-fb1CiECMorzMxHOKmHlCE4nJzBDoRO56sbgqJI"
+}
+
+###
+# all user /GET 
+
+get http://localhost:5000/api/auth
+Content-Type: application/json
+
+###
+# get one user / GET
+# req.params user:id 
+get http://localhost:5000/api/auth/651e71da787708d7c03a5358
+Content-Type: application/json
+
+# res 
+{
+  "message": "foydalanuvchi topildi",
+  "user": {
+    "_id": "651e71da787708d7c03a5358",
+    "username": "User",
+    "email": "user@gmail.com",
+    "password": "$2b$10$fNxz55ZffNeSqxgDhThGxOu3T.fgje3lGNEeTjDo4uBYurxT598Py",
+    "cart": [],
+    "order": [],
+    "wishlist": [],
+    "createdAt": "2023-10-05T08:20:42.051Z",
+    "updatedAt": "2023-10-05T08:26:54.026Z",
+    "__v": 0
+  }
+}
+
+###
+#delete user 
+#req.params: id 
+delete http://localhost:5000/api/auth/64fcba3c4be3b69eac53d57a
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY1MWRlMTcwNjIwNGVjMjhjOTRiNjA2ZCIsInVzZXJuYW1lIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYiQwOCRXNC4vdE93R1VUakNpYWhNWDhJUXguSXE1cHY3S04vVm5Nbmhnd3NzbmRiTG5YbGpiMS5kbSIsImRhdGUiOiIyMDIzLTEwLTA0VDIyOjA0OjMyLjQyM1oiLCJfX3YiOjB9LCJpYXQiOjE2OTY1MDEzODIsImV4cCI6MTY5NjU4Nzc4Mn0.MQEspGFN6bnyoxaRt43JqkkR8R3_nr1znHC596bj5fg
+
+# res
+
+
+{
+  "message": "Foydalanuvchi muafaqiyatli o'chirildi"
+}
+
+
