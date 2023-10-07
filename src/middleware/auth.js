@@ -6,7 +6,7 @@ const authMiddleware = async (req, res, next) => {
     token = req.headers.authorization.split(" ")[1];
     try {
       if (token) {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, "secret");
         const user = await User.findById(decoded?.id);
         req.user = user;
         next();
@@ -29,7 +29,7 @@ const isAdmin= async (req, res, next) => {
   // validation check to have token
   if (token) {
     try {
-      const admin_user = await jwt.verify(token, process.env.JWT_SECRET); 
+      const admin_user = await jwt.verify(token, "secret"); 
       if (admin_user?.data?._id) {
         next();
       } else {

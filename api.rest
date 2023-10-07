@@ -45,9 +45,9 @@ post http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username":"User",
-    "email":"user@gmail.com",
-    "password":"user1234"
+    "username":"Abdunazir",
+    "email":"Asqarovabdunazir@gmail.com",
+    "password":"Abdunazir2003"
 }
 
 ###
@@ -60,9 +60,9 @@ post http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    //"username":"User",
-    "email":"user@gmail.com",
-    "password":"user1234"
+    "username":"Abdunazir",
+    "email":"Asqarovabdunazir@gmail.com",
+    "password":"Abdunazir2003"
 }
 
 # res 
